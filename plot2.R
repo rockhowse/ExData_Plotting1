@@ -40,7 +40,7 @@ par(mar = c(2,4,2,2))
 small_data_png_file_name = "plot2.png"
 png(height=480, width=480, file=small_data_png_file_name)
 
-with(small_data, plot(Time, Global_active_power, type="l", ylab="Global Active Power (kilowatts)"))
+with(small_data, plot(Time, Global_active_power, type="l", ylab="Global Active Power (kilowatts)",xlab=""))
 
 # close png file
 dev.off() 

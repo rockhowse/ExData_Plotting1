@@ -44,7 +44,7 @@ par(mar = c(2,4,2,2))
 small_data_png_file_name = "plot3.png"
 png(height=480, width=480, file=small_data_png_file_name)
 
-with(small_data, plot(Time, Sub_metering_1, col="black", type="l", ylab="Energy sub metering"))
+with(small_data, plot(Time, Sub_metering_1, col="black", type="l", ylab="Energy sub metering", xlab=""))
 with(small_data, points(Time, Sub_metering_2, col="red", type="l"))
 with(small_data, points(Time, Sub_metering_3, col="blue", type="l"))
 
