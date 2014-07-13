@@ -18,7 +18,7 @@ if(!file.exists(data_name)) {
 full_data_file_name = "household_power_consumption.txt"
 
 # extracted small data limited to 2007-02-01 through 2007-02-02
-small_data_file_name = "household_power_consumption-20070201-20070202.txt"
+small_data_file_name = "household_power_consumption-20070201-20070202.csv"
 
 # if we haven't already extracted the small data set, let's do it here
 if(!file.exists(small_data_file_name)) {
@@ -59,8 +59,9 @@ if(!file.exists(small_data_file_name)) {
   small_data$Time <- strptime(paste(small_data$Date, small_data$Time),format="%Y-%m-%d %H:%M:%S")
   #head(small_data)
   
-  # write out table
-  write.table(small_data, small_data_file_name)
+  # tried write.table() but it put in a " " between date/time in the Time field messing up format
+  # using write.csv() instead
+  write.csv(small_data, small_data_file_name)
 } else {
   print(paste(small_data_file_name, "already exists."))
 }
