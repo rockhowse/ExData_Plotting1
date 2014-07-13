@@ -20,19 +20,24 @@ setwd("F:/Dogbert/Coursera/DataScience/04_ExploritoryDataAnalysis/W1/ExData_Plot
 source("DataExtractor.R")
 
 # read in the extracted data set
-small_data <- read.csv(small_data_file_name)
+small_data <- read.csv(small_data_file_name, stringsAsFactors=F)
 names(small_data)
+str(small_data)
 
-# adjust the margins
-par(mar = c(4,4,2,2))
+# have to re-convert time to date/time
+small_data$Time <- strptime(small_data$Time,format="%Y-%m-%d %H:%M:%S")
+
+# adjust the margins (remove bottom so X is trimmed off)
+par(mar = c(2,4,2,2))
 
 #histogram
-# set title
-# set X lable
-# set color
-hist(small_data$Global_active_power, main="Global Active Power", xlab="Global Active Power (killowatts)", col="red")
+# no title
+# use line chart
+# format Y with Day
+# set Y lable
+with(small_data, plot(Time, Global_active_power, type="l", ylab="Global Active Power (kilowatts)"))
 
-small_data_png_file_name = "plot1.png"
+small_data_png_file_name = "plot2.png"
 
 # copy to png
 dev.copy(png, file=small_data_png_file_name)
