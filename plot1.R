@@ -24,7 +24,7 @@ small_data <- read.csv(small_data_file_name)
 names(small_data)
 
 # adjust the margins
-par(mar = c(4,4,2,2))
+par(mar = c(4,4,2,0))
 
 #histogram
 # set title
@@ -32,10 +32,11 @@ par(mar = c(4,4,2,2))
 # set color
 hist(small_data$Global_active_power, main="Global Active Power", xlab="Global Active Power (killowatts)", col="red")
 
+# save it to a 480x480 pixel png file
 small_data_png_file_name = "plot1.png"
+png(height=480, width=480, file=small_data_png_file_name)
 
-# copy to png
-dev.copy(png, file=small_data_png_file_name)
+hist(small_data$Global_active_power, main="Global Active Power", xlab="Global Active Power (killowatts)", col="red")
 
 # close png file
 dev.off() 
